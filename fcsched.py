@@ -46,7 +46,7 @@ if __name__ == '__main__':
 			print "________________________________________________________________________"
 			print "Time now is " + str(time_now)
 			# query the predict server	
-			predict_client = pexpect.spawn("nc -u "+predict_server_host+" "+predict_server_port)	
+			predict_client = pexpect.spawn("nc -4 -u "+predict_server_host+" "+predict_server_port)
 			predict_client.sendline("PREDICT "+funcube_name)
 			predict_client.timeout=2.0	
 			res=predict_client.expect([binascii.unhexlify("0A1A"), pexpect.TIMEOUT, pexpect.EOF])
